@@ -137,11 +137,11 @@ function sendMail(){
         
         if (attachment_Id != "") {
           // Google Driveから添付ファイルのデータを取得
-          var attachment = DocsList.getFileById(attachment_Id).getBlob();
+          var attachment = DriveApp.getFileById(attachment_Id).getBlob();
           if (attachment != null) {
             // Gmail添付用のデータを作成（ファイル名、mimeタイプ、バイト配列を指定）
             attachmentFiles.push({fileName:attachment.getName(), mimeType: attachment.getContentType(), content:attachment.getBytes()});
-            attachment_URL = DocsList.getFileById(attachment_Id).getUrl();
+            attachment_URL = DriveApp.getFileById(attachment_Id).getUrl();
           }
         
           MailApp.sendEmail(  
